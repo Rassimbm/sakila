@@ -42,3 +42,10 @@ ON film.film_id = film_actor.film_id
 WHERE film.rating = "G"
 AND film.special_features LIKE "%behind the scenes%"
 AND film_actor.actor_id = 15;
+
+6. What query would you run to get all the actors that joined in the film_id = 369? Your query should return the film_id, title, actor_id, and actor_name.
+SELECT film.film_id, film.title AS film_title, actor.actor_id, CONCAT_WS(" ", actor.first_name, actor.last_name) AS actor_name
+FROM film
+JOIN film_actor ON film.film_id = film_actor.film_id
+JOIN actor ON film_actor.actor_id = actor.actor_id
+WHERE film.film_id = 369;
