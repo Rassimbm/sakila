@@ -33,3 +33,12 @@ AND address.city_id = 1
 OR address.city_id = 42
 OR address.city_id = 312
 OR address.city_id = 459;
+
+5. What query would you run to get all the films with a "rating = G" and "special feature = behind the scenes", joined by actor_id = 15? Your query should return the film title, description, release year, rating, and special feature. Hint: You may use LIKE function in getting the 'behind the scenes' part.
+SELECT film.title, film.description, film.release_year, film.rating, film.special_features
+FROM film
+LEFT JOIN film_actor
+ON film.film_id = film_actor.film_id
+WHERE film.rating = "G"
+AND film.special_features LIKE "%behind the scenes%"
+AND film_actor.actor_id = 15;
